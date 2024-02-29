@@ -10,7 +10,7 @@ myLength x = foldl (+) 0 (map (makeOne) x)
 myReverse :: [Int] -> [Int]
 myReverse x = foldr (f) [] x
     where 
-        f a b = b ++ (take 1 (repeat a)) 
+        f a b = b ++ [a] 
 
 countIn :: [[Int]] -> Int -> [Int]
 countIn list n = map (count) list
