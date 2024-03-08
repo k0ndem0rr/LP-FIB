@@ -28,14 +28,13 @@ primes = garbell [2..]
         garbell (p : xs) = p : garbell [x | x <- xs, x `mod` p /= 0]
 
 hammings :: [Integer]
-hammings = (mult [1])
+hammings = 1 : (merge (map (*2) hammings) $ merge ( map (*3) hammings) (map (*5) hammings))
     where
-        mult  n = merge n (mult (concat [[x*2,x*3,x*5] | x <- n, x < 10]))
-            where
-                merge (x:xs) (y:ys)
-                    | x < y               = x : merge xs (y:ys)
-                    | x == y              = x : merge xs ys
-                    | otherwise           = y : merge (x:xs) ys
+        merge :: [Integer] -> [Integer] -> [Integer]
+        merge (x:xs) (y:ys)
+          | x < y               = x : merge xs (y:ys)
+          | x == y              = x : merge xs ys
+          | otherwise           = y : merge (x:xs) ys
 
 
 {-hammings = hammings' [] [1..]
