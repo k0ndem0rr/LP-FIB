@@ -1,0 +1,15 @@
+def fib(n):
+    a = 0
+    yield a
+    b = 1
+    while True:
+        if b <= n:
+            yield b
+            a, b = b, a + b
+        else:
+            raise StopIteration
+a = fib(20)    
+
+f = fib(100)
+for i in range(10):
+    print(next(f))
