@@ -14,6 +14,21 @@ class hinnerVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by hinnerParser#defDef.
+    def visitDefDef(self, ctx:hinnerParser.DefDefContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by hinnerParser#uniseñaDef.
+    def visitUniseñaDef(self, ctx:hinnerParser.UniseñaDefContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by hinnerParser#multiseñaDef.
+    def visitMultiseñaDef(self, ctx:hinnerParser.MultiseñaDefContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by hinnerParser#numberExpr.
     def visitNumberExpr(self, ctx:hinnerParser.NumberExprContext):
         return self.visitChildren(ctx)
@@ -24,18 +39,13 @@ class hinnerVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by hinnerParser#addExpr.
-    def visitAddExpr(self, ctx:hinnerParser.AddExprContext):
+    # Visit a parse tree produced by hinnerParser#plusExpr.
+    def visitPlusExpr(self, ctx:hinnerParser.PlusExprContext):
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by hinnerParser#lambdaExpr.
     def visitLambdaExpr(self, ctx:hinnerParser.LambdaExprContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by hinnerParser#applicationExpr.
-    def visitApplicationExpr(self, ctx:hinnerParser.ApplicationExprContext):
         return self.visitChildren(ctx)
 
 
@@ -46,6 +56,16 @@ class hinnerVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by hinnerParser#applicationDef.
     def visitApplicationDef(self, ctx:hinnerParser.ApplicationDefContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by hinnerParser#exprDef.
+    def visitExprDef(self, ctx:hinnerParser.ExprDefContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by hinnerParser#parenthesis.
+    def visitParenthesis(self, ctx:hinnerParser.ParenthesisContext):
         return self.visitChildren(ctx)
 
 

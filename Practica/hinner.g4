@@ -1,28 +1,32 @@
 grammar hinner;
 
-// 2
-// x
-// (+) 2
-// \x -> (+) 2 x
-// (\x -> (+) 2 x) 4
-
 root : 
-    expr+
+    (('\t'|'\r'|application|lambda|def) '\n')* 
+    (('\t'|'\r'|application|lambda|def))? 
+    ;
+def:
+    expr '::' seña #defDef
+    ;
+
+seña:
+    VARIABLE #uniseñaDef
+    | VARIABLE '->' seña #multiseñaDef
     ;
 
 expr :
     NUMBER                  # numberExpr
     | VARIABLE              # variableExpr
-    | '(+)' NUMBER    # addExpr
+    | '(+)'                 # plusExpr
     | lambda                # lambdaExpr 
-    | application           # applicationExpr
     ;
 
 lambda : 
-    '\\' VARIABLE '->' expr #lambdaDef
+    '\\' VARIABLE '->' application #lambdaDef
     ;
 application : 
-    '(' lambda expr ')'     #applicationDef
+    application expr      #applicationDef
+    | '(' application ')'  #parenthesis
+    | expr                 #exprDef
     ;
 
 
