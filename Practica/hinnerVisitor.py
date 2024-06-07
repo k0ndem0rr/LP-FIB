@@ -69,5 +69,10 @@ class hinnerVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by hinnerParser#variableDef.
+    def visitVariableDef(self, ctx:hinnerParser.VariableDefContext):
+        return self.visitChildren(ctx)
+
+
 
 del hinnerParser
