@@ -5,7 +5,8 @@ root :
     (('\t'|'\r'|application|lambda|def))? 
     ;
 def:
-    application '::' seña   #defDef
+    variable '::' expr      #invalidDef
+    | application '::' seña #defDef
     ;
 
 seña:
@@ -25,12 +26,13 @@ lambda :
     ;
 application : 
     application expr        #applicationDef
-    | '(' application ')'  #parenthesis
-    | expr                 #exprDef
+    | '(' application ')'   #parenthesis
+    | expr                  #exprDef
     ;
 
 variable : 
     VARIABLE                #variableDef
+    | '(' variable ')'      #variableParenthesis
     ;
 
 NUMBER     : [0-9]+ ;
